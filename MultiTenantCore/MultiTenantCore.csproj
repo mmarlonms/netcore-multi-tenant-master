@@ -4,7 +4,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Projetos\Pessoal\netcore-multi-tenant-master\netcore-multi-tenant-master\MultiTenantCore\MultiTenantCore.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
+    <PackageReference Include="MonteOlimpo.Base.ApiBoot" Version="3.0.2" />
     <PackageReference Include="SaasKit.Multitenancy" Version="1.1.4" />
     <PackageReference Include="SaasKit.Multitenancy.StructureMap" Version="1.1.4" />
   </ItemGroup>
