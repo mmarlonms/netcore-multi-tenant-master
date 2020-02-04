@@ -21,6 +21,7 @@ namespace MultiTenantCore.Controllers
         [HttpGet("GetAlunos")]
         public IEnumerable<Aluno> Get([FromServices] ITenant<Portal> tenant)
         {
+  
             return ContratanetAluno.GetAlunos(tenant.Value.Name);
         }
     }

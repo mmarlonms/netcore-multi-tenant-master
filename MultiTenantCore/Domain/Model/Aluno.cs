@@ -5,6 +5,6 @@
         public string Nome { get; set; }
         public int Idade { get; set; }
 
-        public string TenantName { get; set; }
+        public string PortalName { get; set; }
     }
 }
