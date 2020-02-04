@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using MonteOlimpo.Base.Extensions.Configuration;
 using System.IO;
 
-namespace AspNetStructureMapSample
+namespace MultiTenantCore
 {
     public class Program
 	{

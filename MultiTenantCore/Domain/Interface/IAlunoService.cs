@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using MultiTenantCore.Domain.Model;
+﻿using MultiTenantCore.Domain.Model;
+using System.Collections.Generic;
 
 namespace MultiTenantCore.Domain.Interface
 {

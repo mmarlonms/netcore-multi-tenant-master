@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace AspNetStructureMapSample
+namespace MultiTenantCore
 {
-	public class AppTenant
+    public class Portal
     {
         public string Name { get; set; }
         public IEnumerable<string> Hostnames { get; set; }

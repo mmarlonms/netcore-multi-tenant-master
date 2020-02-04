@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AspNetStructureMapSample
+namespace MultiTenantCore
 {
-    public class AppTenantResolver : MemoryCacheTenantResolver<AppTenant>
+    public class PortalResolver : MemoryCacheTenantResolver<Portal>
     {
         private readonly Dictionary<string, string> mappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
@@ -16,7 +16,7 @@ namespace AspNetStructureMapSample
             { "localhost:60001", "Outro"}
         };
 
-        public AppTenantResolver(IMemoryCache cache, ILoggerFactory loggerFactory) 
+        public PortalResolver(IMemoryCache cache, ILoggerFactory loggerFactory) 
             : base(cache, loggerFactory)
         {
 
@@ -27,20 +27,19 @@ namespace AspNetStructureMapSample
             return context.Request.Host.Value.ToLower();
         }
 
-        protected override IEnumerable<string> GetTenantIdentifiers(TenantContext<AppTenant> context)
+        protected override IEnumerable<string> GetTenantIdentifiers(TenantContext<Portal> context)
         {
             return context.Tenant.Hostnames;
         }
 
-        protected override Task<TenantContext<AppTenant>> ResolveAsync(HttpContext context)
+        protected override Task<TenantContext<Portal>> ResolveAsync(HttpContext context)
         {
-            string tenantName = null;
-            TenantContext<AppTenant> tenantContext = null;
+            TenantContext<Portal> tenantContext = null;
 
-            if (mappings.TryGetValue(context.Request.Host.Value, out tenantName))
+            if (mappings.TryGetValue(context.Request.Host.Value, out string tenantName))
             {
-                tenantContext = new TenantContext<AppTenant>(
-                    new AppTenant { Name = tenantName, Hostnames = new[] { context.Request.Host.Value } });
+                tenantContext = new TenantContext<Portal>(
+                    new Portal { Name = tenantName, Hostnames = new[] { context.Request.Host.Value } });
             }
 
             return Task.FromResult(tenantContext);

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using MultiTenantCore.Domain.Interface;
+﻿using MultiTenantCore.Domain.Interface;
 using MultiTenantCore.Domain.Model;
+using System.Collections.Generic;
 
 namespace MultiTenantCore.Service.Alunos
 {

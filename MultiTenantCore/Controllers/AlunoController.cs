@@ -1,29 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using MonteOlimpo.Base.ApiBoot;
 using MultiTenantCore.Domain.Interface;
 using MultiTenantCore.Domain.Model;
 using SaasKit.Multitenancy;
-using AspNetStructureMapSample;
+using System.Collections.Generic;
 
 namespace MultiTenantCore.Controllers
 {
-    [ApiController]
+    
     [Route("Aluno")]
-    public class AlunoController : ControllerBase
+    public class AlunoController : ApiBaseController
     {
-        public AlunoController(IAlunoService contratanetAluno, ITenant<AppTenant> tenant)
+        public IAlunoService ContratanetAluno { get; }
+
+        public AlunoController(IAlunoService contratanetAluno)
         {
             ContratanetAluno = contratanetAluno;
-            Tenant = tenant;
         }
 
-        public IAlunoService ContratanetAluno { get; }
-        public ITenant<AppTenant> Tenant { get; }
-
         [HttpGet("GetAlunos")]
-        public IEnumerable<Aluno> Get()
+        public IEnumerable<Aluno> Get([FromServices] ITenant<Portal> tenant)
         {
-            return ContratanetAluno.GetAlunos(Tenant.Value.Name);
+            return ContratanetAluno.GetAlunos(tenant.Value.Name);
         }
     }
 }

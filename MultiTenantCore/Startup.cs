@@ -7,7 +7,7 @@ using MultiTenantCore.Service.Alunos;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace AspNetStructureMapSample
+namespace MultiTenantCore
 {
     public class Startup : MonteOlimpoBootStrap
     {
@@ -18,14 +18,14 @@ namespace AspNetStructureMapSample
 
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddMultitenancy<AppTenant, AppTenantResolver>();
+            services.AddMultitenancy<Portal, PortalResolver>();
             base.ConfigureServices(services);
         }
 
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMultitenancy<AppTenant>();
+            app.UseMultitenancy<Portal>();
 
             base.Configure(app, env);
         }
